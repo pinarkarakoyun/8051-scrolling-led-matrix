@@ -62,4 +62,7 @@ To rebuild the firmware, open `project/8051_Led_Board.uvproj` in Keil uVision (W
 
 ## What I learned
 
-<!-- TODO (your words): timer interrupts, shift registers, multiplexing, ... -->
+- **Interrupt-driven design.** Timer 0 refreshes one scan line about every millisecond, Timer 1 drives the scrolling with a 50 ms tick, and two external interrupts handle the buttons. `main()` is just an empty loop. Running several time-based tasks at different rates this way is something I could not have done cleanly with `delay` loops.
+- **Multiplexing and shift registers.** Lighting one line at a time, fast enough that the eye sees a full picture, keeps the pin count low. Cascading four 74HC595 shift registers lets the microcontroller drive 32 outputs with only three pins (data, clock, latch).
+- **Hardware and software both had to be right.** First I had to get the wiring in the Proteus schematic correct, and only then could I work on the text orientation in the code.
+- **Keep notes while debugging.** Fixing the orientation took a lot of trial and error, and I did not write down what I changed. Since then I commit small steps and keep a project log, so I can always trace how a problem was solved.
