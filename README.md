@@ -54,7 +54,11 @@ To rebuild the firmware, open `project/8051_Led_Board.uvproj` in Keil uVision (W
 
 ## Challenges
 
-<!-- TODO (your words): the mirrored / transposed characters problem and how you solved it -->
+**Wiring in Proteus.** The schematic needs many connections (four matrices, four daisy-chained shift registers, two buttons, crystal and reset). Getting every wire right took a lot of effort at the start and was the hardest part of the build.
+
+**Getting the text orientation right.** Once the hardware worked, the text appeared mirrored or upside down. It took a long time to track down and fix before the orientation was correct. The font table only covers the characters used in the message; any other character is drawn as a blank.
+
+<!-- TODO (after checking on Windows): add exactly what was changed to fix the orientation -->
 
 ## What I learned
 
