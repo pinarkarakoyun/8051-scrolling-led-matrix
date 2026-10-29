@@ -23,7 +23,20 @@ A scrolling text display built on an AT89C51 (8051) microcontroller, driving fou
 
 Pin map: `P1.0` serial data, `P1.1` shift clock, `P1.2` latch, `P2` line select.
 
-<!-- TODO: add the schematic screenshot (schematic.png) -->
+### System overview
+
+```mermaid
+flowchart LR
+    BTN1["Button 1<br/>INT0 (P3.2)<br/>pause / resume"] --> MCU
+    BTN2["Button 2<br/>INT1 (P3.3)<br/>speed"] --> MCU
+    XTAL["12 MHz crystal<br/>+ reset circuit"] --> MCU
+    MCU["AT89C51<br/>Timer 0: display scan<br/>Timer 1: scrolling"]
+    MCU -- "P1.0 data<br/>P1.1 clock<br/>P1.2 latch" --> SR["4x 74HC595<br/>daisy-chained, 32 bits"]
+    SR --> M
+    MCU -- "P2.0-P2.7<br/>scan line select" --> M["4x 8x8 LED dot matrix<br/>32-column display"]
+```
+
+<!-- TODO: add the Proteus schematic screenshot (docs/images/schematic.png) -->
 <!-- TODO: double-check the wording "row"/"column" for P2 and the 595 outputs against your own schematic -->
 
 ## How the firmware works
