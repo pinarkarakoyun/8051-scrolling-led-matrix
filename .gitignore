@@ -1,0 +1,16 @@
+# Keil build outputs (the final .hex is kept on purpose)
+project/Objects/*
+!project/Objects/8051_Led_Board.hex
+project/Listings/
+*.lst
+*.obj
+*.m51
+*.lnp
+*.__i
+*.build_log.htm
+# Machine-specific IDE / workspace files
+*.uvgui.*
+*.workspace
+Project Backups/
+# macOS
+.DS_Store
